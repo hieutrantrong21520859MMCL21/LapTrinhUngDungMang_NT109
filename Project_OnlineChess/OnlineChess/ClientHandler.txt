@@ -1,0 +1,70 @@
+package controller;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
+import java.util.ArrayList;
+
+import model.Player;
+
+public class ClientHandler implements Runnable
+{
+	private final int MAX_PLAYERS = 2;
+	
+	private Player player;
+	private ArrayList<Player> clients = new ArrayList<Player>();
+	private Socket socket;
+	
+	public ClientHandler(Player player) {
+		this.player = player;
+		socket = player.getSocket();
+	}
+	
+	@Override
+	public void run() {
+		try
+		{
+			while (socket.isConnected())
+			{
+				/*
+				BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+				
+				String received = br.readLine();
+				String response = "";
+				String msg = "";
+				
+				// Cases
+				if (received.startsWith("/login"))
+				{
+					// Add the client to the list
+					clients.add(this.player);
+					
+					if (clients.size() > MAX_PLAYERS)
+					{
+						int lastPos = clients.size() - 1;
+						
+						// Reject the new added client
+						msg = "Sorry, the lobby is full! Please try again later";
+						response = "/error" + " " + msg;
+						bw.write(response);
+						bw.newLine();
+						bw.flush();
+						
+						clients.remove(lastPos);
+					}
+				}
+				else
+				{
+					
+				}*/
+			}
+		}
+		catch (Exception e)
+		{
+			
+		}
+	}
+}
